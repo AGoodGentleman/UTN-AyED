@@ -107,6 +107,8 @@ dq.push_back("4")
 dq.push_back("5")
 
 print(f"Lista inicial: {dq.to_list()}")
+print(f"Longitud: {len(dq)}")
+print(f"Esta vacía? {dq.is_empty()}")
 
 #edcba12345
 
@@ -134,4 +136,32 @@ print(f"Peek back tras pop: {dq.peek_back()}")
 
 # 4
 
+print(f"Lista: {dq.to_list()}")
+print(f"Longitud: {len(dq)}")
+print(f"Esta vacía? {dq.is_empty()}")
+
+dq.pop_front()
+dq.pop_front()
+dq.pop_front()
+
+dq.pop_back()
+dq.pop_back()
+dq.pop_back()
+
+print(f"Lista: {dq.to_list()}")
+print(f"Longitud: {len(dq)}")
+print(f"Esta vacía? {dq.is_empty()}")
+
+#a1
+
+dq.pop_front()
+#dq.pop_front()
+#dq.pop_front() esta salta index error
+
+dq.pop_back()
+#dq.pop_back()
+#dq.pop_back() esta salta index error
+
 print(f"Lista final: {dq.to_list()}")
+print(f"Longitud: {len(dq)}")
+print(f"Esta vacía? {dq.is_empty()}")
