@@ -1,144 +1,137 @@
-from collections import deque
-
-# Cola: (sin deque):
-
-cola_s = []
-cola_s.append("A")
-cola_s.append("B")
-#print(cola_s)
-#print(cola_s.pop(0))
-
-# Pila (sin deque):
-
-pila_s = []
-pila_s.append("X")
-pila_s.append("Y")
-#print(pila_s)
-#print(pila_s.pop())
-
-# Cola: (con deque):
-
-cola_c = deque()
-cola_c.append("A")
-cola_c.append("B")
-#print(cola_c)
-#print(cola_c.popleft())
-
-# Pila: (con deque):
-
-pila_c = deque()
-pila_c.append("A")
-pila_c.append("B")
-#print(pila_c)
-#print(pila_c.pop())
-
-# Como deque no es mas que una clase que simboliza una cola de doble entrada o de doble extremo (doubled ended queue), podemos nosotros crearla:
-
 class Node:
-    def __init__(self,value):
+    def __init__(self, value):
         self.value = value
-        self.next = None
         self.prev = None
+        self.next = None
 
 class Deque:
     def __init__(self):
         self.head = None
         self.tail = None
+        self._len = 0
 
-    def empty(self):
-        return self.head is None
-    
-    def add_infront(self,value):
-        new = Node(value)
-        if self.empty():
-            self.head = self.tail = new
-        
+    def __len__(self):
+        return self._len
+
+    def is_empty(self):
+        return self._len == 0
+
+    def push_front(self, value):
+        node = Node(value)
+        if self.is_empty():
+            self.head = self.tail = node
         else:
-            new.next = self.head
-            self.head.prev = new
-            self.head = new
+            node.next = self.head
+            self.head.prev = node
+            self.head = node
+        self._len += 1
 
-    def add_inback(self,value):
-        new = Node(value)
-        if self.empty():
-            self.head = self.tail = new
-        
+    def push_back(self, value):
+        node = Node(value)
+        if self.is_empty():
+            self.head = self.tail = node
         else:
-            new.prev = self.tail
-            self.tail.next = new
-            self.tail = new
+            node.prev = self.tail
+            self.tail.next = node
+            self.tail = node
+        self._len += 1
 
-    def pop_infront(self):
-        if self.empty():
-            return None
+    def pop_front(self):
+        if self.is_empty():
+            raise IndexError("pop_front from empty deque")
         value = self.head.value
         self.head = self.head.next
         if self.head:
-           self.head.prev = None
+            self.head.prev = None
         else:
             self.tail = None
+        self._len -= 1
         return value
-    
-    def pop_inback(self):
-        if self.empty():
-            return None
+
+    def pop_back(self):
+        if self.is_empty():
+            raise IndexError("pop_back from empty deque")
         value = self.tail.value
         self.tail = self.tail.prev
         if self.tail:
             self.tail.next = None
         else:
             self.head = None
+        self._len -= 1
         return value
-    
+
+    def peek_front(self):
+        if self.is_empty():
+            raise IndexError("peek_front from empty deque")
+        return self.head.value
+
+    def peek_back(self):
+        if self.is_empty():
+            raise IndexError("peek_back from empty deque")
+        return self.tail.value
+
     def to_list(self):
-        out = []
-        cur = self.head
+        out, cur = [], self.head
         while cur:
             out.append(cur.value)
             cur = cur.next
         return out
 
-    
-print("")
+    def __iter__(self):
+        cur = self.head
+        while cur:
+            yield cur.value
+            cur = cur.next
 
+    def clear(self):
+        self.head = self.tail = None
+        self._len = 0
+
+    def __repr__(self):
+        return f"Deque({self.to_list()})"
+    
 dq = Deque()
 
-dq.add_infront("a") #a
-dq.add_infront("b") #ba
-dq.add_infront("c") #cba
-dq.add_infront("d") #dcba
-dq.add_infront("e") #edcba
+dq.push_front("a")
+dq.push_front("b")
+dq.push_front("c")
+dq.push_front("d")
+dq.push_front("e")
 
-print(dq.to_list())
+#edcba
 
-dq.add_inback(1) #edcba1
-dq.add_inback(2) #edcba12
-dq.add_inback(3) #edcba123
-dq.add_inback(4) #edcba1234
-dq.add_inback(5) #edcba12345
+dq.push_back("1")
+dq.push_back("2")
+dq.push_back("3")
+dq.push_back("4")
+dq.push_back("5")
 
-print(dq.to_list())
+print(f"Lista inicial: {dq.to_list()}")
 
-dq.pop_infront() #dcba12345
+#edcba12345
 
-dq.pop_inback() #dcba1234
+print(f"Peek front: {dq.peek_front()}")
 
-dq.pop_infront()
-dq.pop_infront()
-dq.pop_infront()
+# e
 
-print(dq.to_list())
+print(f"Peek back: {dq.peek_back()}")
 
-dq.pop_inback()
-dq.pop_inback()
-dq.pop_inback()
+# 5
 
-print(dq.to_list())
+dq.pop_front()
 
-#debería quedar a1
+#dcba12345
 
-dq.pop_infront() #1
-dq.pop_infront() #
-dq.pop_infront() # Aca detecta que no queda y larga none
+dq.pop_back()
 
-print(dq.to_list())
+#dcba1234
+
+print(f"Peek front tras pop: {dq.peek_front()}")
+
+# d
+
+print(f"Peek back tras pop: {dq.peek_back()}")
+
+# 4
+
+print(f"Lista final: {dq.to_list()}")
