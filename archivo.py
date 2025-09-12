@@ -71,7 +71,8 @@ class Deque:
         return self.tail.value
 
     def to_list(self):
-        out, cur = [], self.head
+        out = []
+        cur = self.head
         while cur:
             out.append(cur.value)
             cur = cur.next
