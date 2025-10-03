@@ -49,7 +49,7 @@ class LinkedList:
             raise IndexError("índice fuera de rango")
         if index == 0:
             return self.push_front(value)
-        prev = self._node_at(index - 1)
+        prev = self.node_at(index - 1)
         prev.next = Node(value, prev.next)
         self._size += 1
 
@@ -108,19 +108,21 @@ class LinkedList:
         return -1
 
     # --- utilidades privadas ---
-    def _node_at(self, index):
+    def node_at(self, index):
         "Devuelve el nodo en posición index."
         if index < 0 or index >= self._size:
             raise IndexError("índice fuera de rango")
         curr = self.head
-        for _ in range(index):
+        for i in range(index):
             curr = curr.next
-        return curr
+        return curr.data
+    
+ll = LinkedList()
 
-ll = LinkedList([10, 20, 30])
-ll.push_front(5)        # [5, 10, 20, 30]
-ll.push_back(40)        # [5, 10, 20, 30, 40]
-ll.insert(2, 15)        # [5, 10, 15, 20, 30, 40]
-ll.remove(20)           # [5, 10, 15, 30, 40]
-print(ll, "len=", len(ll))
-print("índice de 30:", ll.find(30))
+ll.push_back(1)
+ll.push_back(2)
+ll.push_back(3)
+
+print(f"El valor de dato del Nodo en índice 0 es {ll.node_at(0)}.") #1
+print(f"El valor de dato del Nodo en índice 1 es {ll.node_at(1)}.") #2
+print(f"El valor de dato del Nodo en índice 2 es {ll.node_at(2)}.") #3

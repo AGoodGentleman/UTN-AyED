@@ -4,7 +4,7 @@ class Node:
         self.data = data
         self.next = next
 
-class LinkedList:
+class LinkedList:                                                           
     def __init__(self, iterable=None):
         self.head = None
         self._size = 0
@@ -116,11 +116,18 @@ class LinkedList:
         for _ in range(index):
             curr = curr.next
         return curr
+    
+ll = LinkedList()
 
-ll = LinkedList([10, 20, 30])
-ll.push_front(5)        # [5, 10, 20, 30]
-ll.push_back(40)        # [5, 10, 20, 30, 40]
-ll.insert(2, 15)        # [5, 10, 15, 20, 30, 40]
-ll.remove(20)           # [5, 10, 15, 30, 40]
-print(ll, "len=", len(ll))
-print("índice de 30:", ll.find(30))
+ll.push_back(1)
+ll.push_back(2)
+ll.push_back(3)
+ll.push_back(4)
+ll.push_back(5)
+
+print(f"La cantidad de Nodos de la Linked List es {ll._size}.") #5
+
+ll.pop_front()
+ll.pop_front()
+
+print(f"La cantidad de Nodos de la Linked List es {ll._size}.") #3

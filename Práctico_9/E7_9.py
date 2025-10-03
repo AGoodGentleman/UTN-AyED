@@ -94,6 +94,15 @@ class LinkedList:
                 return True
             prev, curr = curr, curr.next
         return False
+    
+    def count_data(self,data):
+        curr = self.head
+        counter = 0
+        while curr:
+            if curr.data == data:
+                counter += 1
+            curr = curr.next
+        return counter
 
     # --- búsqueda ---
     def find(self, value):
@@ -106,6 +115,14 @@ class LinkedList:
             curr = curr.next
             idx += 1
         return -1
+    
+    def to_list(self):
+        out = []
+        cur = self.head
+        while cur:
+            out.append(cur.data)
+            cur = cur.next
+        return out
 
     # --- utilidades privadas ---
     def _node_at(self, index):
@@ -116,11 +133,16 @@ class LinkedList:
         for _ in range(index):
             curr = curr.next
         return curr
+    
+S = LinkedList()
+size = int(input("Ingrese el tamaño de su lista: "))
+i = 1
 
-ll = LinkedList([10, 20, 30])
-ll.push_front(5)        # [5, 10, 20, 30]
-ll.push_back(40)        # [5, 10, 20, 30, 40]
-ll.insert(2, 15)        # [5, 10, 15, 20, 30, 40]
-ll.remove(20)           # [5, 10, 15, 30, 40]
-print(ll, "len=", len(ll))
-print("índice de 30:", ll.find(30))
+while i <= size:
+    node = input("Ingrese el Nodo a añadir: ")
+    S.push_back(node)
+    i += 1
+
+A = input("Ingrese el dato que desea buscar: ")
+
+print(f"La cantidad de veces que aparece '{A}' es {S.count_data(A)}.")

@@ -94,7 +94,16 @@ class LinkedList:
                 return True
             prev, curr = curr, curr.next
         return False
-
+    
+    def lista_impar(self):
+        new_list = []
+        curr = self.head
+        while curr:
+            if curr.data % 2 == 1:
+                new_list.append(curr.data)
+            curr = curr.next
+        return new_list
+    
     # --- búsqueda ---
     def find(self, value):
         "Devuelve el índice de la primera ocurrencia o -1 si no está."
@@ -106,6 +115,14 @@ class LinkedList:
             curr = curr.next
             idx += 1
         return -1
+    
+    def to_list(self):
+        out = []
+        cur = self.head
+        while cur:
+            out.append(cur.data)
+            cur = cur.next
+        return out
 
     # --- utilidades privadas ---
     def _node_at(self, index):
@@ -116,11 +133,13 @@ class LinkedList:
         for _ in range(index):
             curr = curr.next
         return curr
+    
+ll = LinkedList()
 
-ll = LinkedList([10, 20, 30])
-ll.push_front(5)        # [5, 10, 20, 30]
-ll.push_back(40)        # [5, 10, 20, 30, 40]
-ll.insert(2, 15)        # [5, 10, 15, 20, 30, 40]
-ll.remove(20)           # [5, 10, 15, 30, 40]
-print(ll, "len=", len(ll))
-print("índice de 30:", ll.find(30))
+ll.push_back(1)
+ll.push_back(2)
+ll.push_back(3)
+ll.push_back(4)
+ll.push_back(5)
+
+print(f"Su lista impar queda así: {ll.lista_impar()}.")

@@ -76,6 +76,20 @@ class LinkedList:
         prev.next = None
         self._size -= 1
         return curr.data
+    
+    def pop_backback(self):
+        "Elimina y devuelve el penúltimo."
+        prev = self.head
+        curr = self.head.next
+        while curr.next.next:
+            prev = curr
+            curr = curr.next
+        value = curr
+        prev.next = curr.next
+        curr = None
+        self._size -= 1
+        return value.data
+
 
     def remove(self, value):
         "Elimina la primera ocurrencia de value. Devuelve True si eliminó."
@@ -106,6 +120,14 @@ class LinkedList:
             curr = curr.next
             idx += 1
         return -1
+    
+    def to_list(self):
+        out = []
+        cur = self.head
+        while cur:
+            out.append(cur.data)
+            cur = cur.next
+        return out
 
     # --- utilidades privadas ---
     def _node_at(self, index):
@@ -116,11 +138,20 @@ class LinkedList:
         for _ in range(index):
             curr = curr.next
         return curr
+    
+ll = LinkedList()
 
-ll = LinkedList([10, 20, 30])
-ll.push_front(5)        # [5, 10, 20, 30]
-ll.push_back(40)        # [5, 10, 20, 30, 40]
-ll.insert(2, 15)        # [5, 10, 15, 20, 30, 40]
-ll.remove(20)           # [5, 10, 15, 30, 40]
-print(ll, "len=", len(ll))
-print("índice de 30:", ll.find(30))
+ll.push_back(1)
+ll.push_back(2)
+ll.push_back(3)
+
+print(f"El penúltimo Nodo es {ll.pop_backback()}.") #2
+
+print(f"{ll.to_list()}")
+
+ll.push_back(4)
+ll.push_back(5)
+
+print(f"El penúltimo Nodo es {ll.pop_backback()}.") #4
+
+print(f"{ll.to_list()}")

@@ -106,6 +106,14 @@ class LinkedList:
             curr = curr.next
             idx += 1
         return -1
+    
+    def to_list(self):
+        out = []
+        cur = self.head
+        while cur:
+            out.append(cur.data)
+            cur = cur.next
+        return out
 
     # --- utilidades privadas ---
     def _node_at(self, index):
@@ -116,11 +124,24 @@ class LinkedList:
         for _ in range(index):
             curr = curr.next
         return curr
+    
+ll = LinkedList()
 
-ll = LinkedList([10, 20, 30])
-ll.push_front(5)        # [5, 10, 20, 30]
-ll.push_back(40)        # [5, 10, 20, 30, 40]
-ll.insert(2, 15)        # [5, 10, 15, 20, 30, 40]
-ll.remove(20)           # [5, 10, 15, 30, 40]
-print(ll, "len=", len(ll))
-print("índice de 30:", ll.find(30))
+ll.push_back("screen")
+ll.push_back("defeat")
+ll.push_back("private")
+ll.push_back("floor")
+ll.push_back("college")
+
+lista = ll.to_list()
+index = 0
+
+for element in lista:
+    new_element = ""
+    for character in element:
+        if character not in "aeiouAEIOU":
+            new_element += character
+    lista[index] = new_element
+    index += 1
+        
+print(lista)

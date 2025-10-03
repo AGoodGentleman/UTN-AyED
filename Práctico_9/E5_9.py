@@ -106,6 +106,14 @@ class LinkedList:
             curr = curr.next
             idx += 1
         return -1
+    
+    def to_list(self):
+        out = []
+        cur = self.head
+        while cur:
+            out.append(cur.data)
+            cur = cur.next
+        return out
 
     # --- utilidades privadas ---
     def _node_at(self, index):
@@ -116,11 +124,22 @@ class LinkedList:
         for _ in range(index):
             curr = curr.next
         return curr
+    
+list = [0,-1,2,-3,4,-5,6,-7,8,-9,10,0]
+ll_neg = LinkedList()
+ll_pos = LinkedList()
+ll_0 = LinkedList()
 
-ll = LinkedList([10, 20, 30])
-ll.push_front(5)        # [5, 10, 20, 30]
-ll.push_back(40)        # [5, 10, 20, 30, 40]
-ll.insert(2, 15)        # [5, 10, 15, 20, 30, 40]
-ll.remove(20)           # [5, 10, 15, 30, 40]
-print(ll, "len=", len(ll))
-print("índice de 30:", ll.find(30))
+for element in list:
+    if element > 0:
+        ll_pos.push_back(element)
+    elif element < 0:
+        ll_neg.push_back(element)
+    elif element == 0:
+        ll_0.push_back(element)
+    else:
+        raise IndexError("Alguno de los elementos no es un numero.")
+    
+print(f"Lista de negativos: {ll_neg.to_list()}.")
+print(f"Lista de ceros: {ll_0.to_list()}.")
+print(f"Lista de positivos: {ll_pos.to_list()}.")
