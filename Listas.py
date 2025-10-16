@@ -85,3 +85,28 @@ def merge(izquierda, derecha):
 
 numeros_4 = [7, 2, 9, 4, 1, 10, 3, 6, 8, 5]
 print(merge_sort(numeros_4))
+
+#Quick Sort
+
+def quick_sort(lista):
+    #Si la lista tiene 0 o 1 elemento, ya está ordenada
+    if len(lista) <= 1:
+        return lista
+
+    #Elegimos un pivote (en este caso, el elemento del medio)
+    pivote = lista[len(lista) // 2]
+
+    #Particionamos la lista en tres partes:
+    menores = [x for x in lista if x < pivote]
+    iguales = [x for x in lista if x == pivote]
+    mayores = [x for x in lista if x > pivote]
+
+    #Ordenamos recursivamente las sublistas y las concatenamos
+    return quick_sort(menores) + iguales + quick_sort(mayores)
+
+#Ejemplo
+
+numeros_5 = [8, 3, 1, 7, 0, 10, 2]
+ordenados = quick_sort(numeros_5)
+print("Lista original:", numeros_5)
+print("Lista ordenada:", ordenados)
