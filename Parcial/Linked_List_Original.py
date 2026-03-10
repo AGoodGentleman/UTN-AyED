@@ -94,6 +94,14 @@ class LinkedList:
                 return True
             prev, curr = curr, curr.next
         return False
+    
+    def to_list(self):
+        out = []
+        cur = self.head
+        while cur:
+            out.append(cur.value)
+            cur = cur.next
+        return out
 
     # --- búsqueda ---
     def find(self, value):
