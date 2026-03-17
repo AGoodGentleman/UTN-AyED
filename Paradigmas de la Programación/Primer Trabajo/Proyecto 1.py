@@ -216,7 +216,7 @@ while choice.lower() == "si":
 playlist_procesada = []
 anterior_score = None
 
-while not cola_canciones.is_empty():
+while cola_canciones.is_empty() == False:
     cancion = cola_canciones.dequeue()
     titulo = cancion[0]
     score = cancion[1]

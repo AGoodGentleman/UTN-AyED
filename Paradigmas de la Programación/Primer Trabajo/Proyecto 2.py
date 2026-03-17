@@ -32,6 +32,18 @@ import matplotlib.pyplot as plt
 # Crear el criterio de palabra decodificada y la forma cesar de decodificacion.
 # Guardar logs en otro txt.
 
+# --- RESUMEN --- ETAPA 3
+# Crear una cola para procesar los posteos.
+# Ordenar los posteos por puntaje de nivel de sospecha (cant. de alertas).
+# Graficar linea de puntaje de nivel de sospecha con MatPlotLib.
+# Filtrar ruido como emojis para darle coherencia al mensaje.
+
+# --- BOCETO --- ETAPA 3
+# Cola de procesamiento.
+# Ordenar mediante linear sort por cantidad de alertas.
+# Grafica de linea de puntaje de nivel de sospecha.
+# Filtrar los emojis con condicionales.
+
 
 def invertir_texto(texto):
     inverso = ""
@@ -328,18 +340,6 @@ while processing_queue.is_empty() == False:
     print("-" * 40)
 
 print(f"Se detectaron {alerta} alertas.")
-
-# --- RESUMEN --- ETAPA 3
-# Crear una cola para procesar los posteos.
-# Ordenar los posteos por puntaje de nivel de sospecha (cant. de alertas).
-# Graficar linea de puntaje de nivel de sospecha con MatPlotLib.
-# Filtrar ruido como emojis para darle coherencia al mensaje.
-
-# --- BOCETO --- ETAPA 3
-# Cola de procesamiento.
-# Ordenar mediante linear sort por cantidad de alertas.
-# Grafica de linea de puntaje de nivel de sospecha.
-# Filtrar los emojis con condicionales.
 
 ordenar_por_sospecha(posts_con_score)
 
