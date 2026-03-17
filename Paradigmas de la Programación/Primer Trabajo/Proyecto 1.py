@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 # ACLARACIÓN
 # En este trabajo, se consultó a IA's (específicamente a ChatGPT) para su llevada a cabo.
