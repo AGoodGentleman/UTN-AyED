@@ -201,13 +201,13 @@ class DiarioViajero:
             letras_ordenadas.append(letra)
             frecuencias.append(letras[letra])
 
-        plt.figure(figsize=(10, 5))
-        plt.plot(letras_ordenadas, frecuencias, marker="o")
-        plt.title("Frecuencia de letras en el diario")
-        plt.xlabel("Letras")
-        plt.ylabel("Frecuencia")
-        plt.grid(True)
-        plt.show()
+        # plt.figure(figsize=(10, 5))
+        # plt.plot(letras_ordenadas, frecuencias, marker="o")
+        # plt.title("Frecuencia de letras en el diario")
+        # plt.xlabel("Letras")
+        # plt.ylabel("Frecuencia")
+        # plt.grid(True)
+        # plt.show()
 
     def encriptar(self, desplazamiento):
         if self.texto == "":
