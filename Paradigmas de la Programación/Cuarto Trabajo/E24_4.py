@@ -9,10 +9,10 @@ pantalla = pygame.display.set_mode((ANCHO, ALTO))
 
 clock = pygame.time.Clock()
 
-spritesheet = pygame.image.load().convert_alpha()
+spritesheet = pygame.image.load("Miscelaneo\spritesheet.png").convert_alpha()
 
-ANCHO_FRAME = 100
-ALTO_FRAME = 100
+ANCHO_FRAME = 92
+ALTO_FRAME = 140
 
 def obtener_frame(fila, columna):
 
