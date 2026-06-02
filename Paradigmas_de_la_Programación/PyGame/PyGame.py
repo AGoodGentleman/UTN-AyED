@@ -4,6 +4,7 @@ Controles:
 - E o Espacio: hablar con un mercader si esta cerca.
 - 1, 2, 3: comprar en la tienda.
 - ESC: volver/cerrar pantalla actual.
+- TAB: ver referencias.
 """
 
 from __future__ import annotations
@@ -278,6 +279,7 @@ class RogueFortress:
         self.normal_kills = 0
         self.announced_thresholds: set[int] = set()
         self.steps_since_passive_heal = 0
+        self.show_help = False
         self.log: list[str] = []
         self.final_title = ""
         self.final_message = ""
@@ -308,6 +310,7 @@ class RogueFortress:
         self.normal_kills = 0
         self.announced_thresholds = set()
         self.steps_since_passive_heal = 0
+        self.show_help = False
         self.log = [
             "Llegas a una isla rodeada de agua.",
             "Derrota a los enemigos y preparate para Baldur.",
@@ -504,6 +507,15 @@ class RogueFortress:
         if event.type != pygame.KEYDOWN:
             return
 
+        if event.key == pygame.K_TAB:
+            self.show_help = not self.show_help
+            return
+
+        if self.show_help:
+            if event.key == pygame.K_ESCAPE:
+                self.show_help = False
+            return
+
         movement_keys = {
             pygame.K_UP: (0, -1),
             pygame.K_w: (0, -1),
@@ -571,6 +583,7 @@ class RogueFortress:
             return
 
         if target in self.merchant_positions:
+            self.show_help = False
             self.state = STATE_SHOP
             self.add_log("El mercader abre su tienda.")
             return
@@ -591,6 +604,7 @@ class RogueFortress:
             for merchant_position in self.merchant_positions
         )
         if merchant_nearby:
+            self.show_help = False
             self.state = STATE_SHOP
             self.add_log("El mercader muestra sus mejoras.")
         else:
@@ -639,7 +653,7 @@ class RogueFortress:
 
     def buy_healing(self) -> None:
         if self.player.hp >= MAX_PLAYER_HP:
-            self.add_log("Ya tienes la vida completa.")
+            self.add_log("No puedes comprar curacion porque tienes la vida completa.")
             return
         if self.player.gold < HEAL_COST:
             self.add_log(f"Necesitas {HEAL_COST} de oro para curarte.")
@@ -913,6 +927,8 @@ class RogueFortress:
         self.draw_header()
         self.draw_map_view()
         self.draw_panel()
+        if self.show_help:
+            self.draw_help_overlay()
 
     def draw_header(self) -> None:
         title = self.subtitle_font.render("Rogue Fortress", True, COLORS["accent"])
@@ -1015,7 +1031,7 @@ class RogueFortress:
             y = self.draw_panel_line(line, text_x, y, COLORS["muted"])
 
         y = controls_y
-        controls = ["WASD/flechas: mover", "E/Espacio: tienda", "ESC: menu"]
+        controls = ["WASD/flechas: mover", "E/Espacio: tienda", "TAB: simbolos", "ESC: menu"]
         for line in controls:
             y = self.draw_panel_line(line, text_x, y, COLORS["muted"])
 
@@ -1026,6 +1042,79 @@ class RogueFortress:
         rendered = font.render(text, True, color)
         self.screen.blit(rendered, (x, y))
         return y + (26 if bold else 21)
+
+    def draw_help_overlay(self) -> None:
+        overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.SRCALPHA)
+        overlay.fill((0, 0, 0, 145))
+        self.screen.blit(overlay, (0, 0))
+
+        width = min(780, WINDOW_WIDTH - 96)
+        height = min(540, WINDOW_HEIGHT - 120)
+        rect = pygame.Rect(
+            (WINDOW_WIDTH - width) // 2,
+            (WINDOW_HEIGHT - height) // 2,
+            width,
+            height,
+        )
+        pygame.draw.rect(self.screen, COLORS["panel"], rect, border_radius=8)
+        pygame.draw.rect(self.screen, COLORS["accent"], rect, 2, border_radius=8)
+
+        title = self.subtitle_font.render("Simbolos y reglas", True, COLORS["accent"])
+        self.screen.blit(title, (rect.left + 28, rect.top + 22))
+
+        left_rows = [
+            ("@", "Jugador: moverse y atacar por choque.", COLORS["text"]),
+            (".", "Llanura transitable.", (180, 188, 168)),
+            ("T", "Bosque transitable.", (97, 176, 105)),
+            ("~", "Agua: bloquea el paso.", (155, 202, 230)),
+            ("^", "Montana: bloquea el paso.", (199, 201, 205)),
+            ("U", "Cueva: posible salida de Baldur.", (201, 179, 230)),
+            ("H", "Casa: obstaculo.", (230, 186, 129)),
+            ("&", "Mercader: mejoras y curacion.", COLORS["accent"]),
+            ("$", "Oro: compras y puntaje.", (248, 207, 99)),
+            ("o", "Tesoro: recompensa alta.", (133, 213, 234)),
+            ("+", "Vida: cura al recoger.", (255, 116, 126)),
+        ]
+        right_rows = [
+            ("r b s w z", "Enemigos faciles.", COLORS["danger"]),
+            ("W m k a e", "Enemigos medios.", COLORS["danger"]),
+            ("B", "Baldur: jefe que rastrea tu posicion.", (255, 104, 96)),
+            ("Objetivo", "20 normales + Baldur.", COLORS["text"]),
+            ("Arma", "Aumenta el dano causado.", COLORS["text"]),
+            ("Armadura", "Reduce el dano recibido.", COLORS["text"]),
+            (
+                "Pasiva",
+                f"+{PASSIVE_HEAL_AMOUNT} vida/{PASSIVE_HEAL_EVERY_STEPS} pasos hasta {PASSIVE_HEAL_CAP}.",
+                COLORS["text"],
+            ),
+            ("Puntaje", "Vida + oro*2 + bonus.", COLORS["text"]),
+            ("TAB/ESC", "Cerrar esta ventana.", COLORS["muted"]),
+        ]
+
+        left_x = rect.left + 32
+        right_x = rect.left + rect.width // 2 + 16
+        y_start = rect.top + 78
+
+        section = self.body_font.render("Mapa", True, COLORS["accent"])
+        self.screen.blit(section, (left_x, y_start - 32))
+        section = self.body_font.render("Combate", True, COLORS["accent"])
+        self.screen.blit(section, (right_x, y_start - 32))
+
+        y = y_start
+        for symbol, description, color in left_rows:
+            rendered_symbol = self.body_font.render(symbol, True, color)
+            rendered_text = self.small_font.render(description, True, COLORS["text"])
+            self.screen.blit(rendered_symbol, (left_x, y))
+            self.screen.blit(rendered_text, (left_x + 54, y + 3))
+            y += 28
+
+        y = y_start
+        for symbol, description, color in right_rows:
+            rendered_symbol = self.small_font.render(symbol, True, color)
+            rendered_text = self.small_font.render(description, True, COLORS["text"])
+            self.screen.blit(rendered_symbol, (right_x, y + 3))
+            self.screen.blit(rendered_text, (right_x + 104, y + 3))
+            y += 28
 
     def draw_shop_overlay(self) -> None:
         overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.SRCALPHA)
@@ -1045,9 +1134,7 @@ class RogueFortress:
         armor_text = self.next_upgrade_text(
             "2", "Armadura", self.player.armor_level, ARMOR_NAMES, ARMOR_COSTS
         )
-        heal_text = f"3 - Curar {HEAL_AMOUNT} HP: {HEAL_COST} oro"
-        if self.player.hp >= MAX_PLAYER_HP:
-            heal_text = "3 - Curar: vida completa"
+        heal_text = f"3 - Curar {HEAL_AMOUNT} de vida: {HEAL_COST} oro"
 
         lines = [
             f"Oro disponible: {self.player.gold}",
