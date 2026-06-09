@@ -1063,7 +1063,7 @@ class RogueFortress:
         self.screen.blit(title, (rect.left + 28, rect.top + 22))
 
         left_rows = [
-            ("@", "Jugador: moverse y atacar por choque.", COLORS["text"]),
+            ("@", "Jugador: moverse y atacar.", COLORS["text"]),
             (".", "Llanura transitable.", (180, 188, 168)),
             ("T", "Bosque transitable.", (97, 176, 105)),
             ("~", "Agua: bloquea el paso.", (155, 202, 230)),
@@ -1078,7 +1078,7 @@ class RogueFortress:
         right_rows = [
             ("r b s w z", "Enemigos faciles.", COLORS["danger"]),
             ("W m k a e", "Enemigos medios.", COLORS["danger"]),
-            ("B", "Baldur: jefe que rastrea tu posicion.", (255, 104, 96)),
+            ("B", "Baldur: jefe que te rastrea.", (255, 104, 96)),
             ("Objetivo", "20 normales + Baldur.", COLORS["text"]),
             ("Arma", "Aumenta el dano causado.", COLORS["text"]),
             ("Armadura", "Reduce el dano recibido.", COLORS["text"]),
@@ -1087,7 +1087,7 @@ class RogueFortress:
                 f"+{PASSIVE_HEAL_AMOUNT} vida/{PASSIVE_HEAL_EVERY_STEPS} pasos hasta {PASSIVE_HEAL_CAP}.",
                 COLORS["text"],
             ),
-            ("Puntaje", "Vida + oro*2 + bonus.", COLORS["text"]),
+            ("Puntaje", "Vida + oro x 2 + bonus.", COLORS["text"]),
             ("TAB/ESC", "Cerrar esta ventana.", COLORS["muted"]),
         ]
 
