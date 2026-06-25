@@ -1,0 +1,4 @@
+.venv_manim/
+media/
+__pycache__/
+*.pyc
