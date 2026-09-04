@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Planificador academico ISI - Caso Martin</title>
+    <meta
+      name="description"
+      content="Aplicacion para planificar la trayectoria academica de Ingenieria en Sistemas de Informacion segun estados y correlatividades."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Ingenieria y Sociedad · 2026</p>
+        <h1>Planificador academico ISI</h1>
+        <p class="subtitle">Caso Martin · Plan 2023 · correlatividades por cursada regular y final aprobado</p>
+      </div>
+      <div class="toolbar" aria-label="Acciones principales">
+        <button id="resetMartin" type="button" title="Restaurar caso Martin" aria-label="Restaurar caso Martin">
+          <span aria-hidden="true">↺</span>
+          <span>Caso Martin</span>
+        </button>
+        <button id="clearScenario" type="button" title="Vaciar escenario" aria-label="Vaciar escenario">
+          <span aria-hidden="true">□</span>
+          <span>Vaciar</span>
+        </button>
+        <button id="downloadReport" type="button" title="Descargar resumen" aria-label="Descargar resumen">
+          <span aria-hidden="true">↓</span>
+          <span>Resumen</span>
+        </button>
+        <button id="printReport" type="button" title="Imprimir reporte" aria-label="Imprimir reporte">
+          <span aria-hidden="true">⎙</span>
+          <span>Imprimir</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="metrics" class="metrics" aria-label="Indicadores del escenario"></section>
+
+      <section class="workbench">
+        <aside class="panel state-panel" aria-labelledby="state-title">
+          <div class="panel-heading">
+            <p class="eyebrow">Entrada</p>
+            <h2 id="state-title">Estado academico</h2>
+          </div>
+          <div id="stateEditor" class="state-editor"></div>
+        </aside>
+
+        <div class="main-stack">
+          <section class="panel" aria-labelledby="second-title">
+            <div class="panel-heading">
+              <p class="eyebrow">Prueba obligatoria</p>
+              <h2 id="second-title">Segundo nivel</h2>
+            </div>
+            <div class="split-results">
+              <div>
+                <h3>Puede cursar</h3>
+                <ul id="secondAllowed" class="result-list"></ul>
+              </div>
+              <div>
+                <h3>No puede cursar</h3>
+                <ul id="secondBlocked" class="result-list"></ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="plan-title">
+            <div class="panel-heading">
+              <p class="eyebrow">Trayectoria</p>
+              <h2 id="plan-title">Plan de estudios</h2>
+            </div>
+            <div id="planGrid" class="plan-grid"></div>
+          </section>
+
+          <section id="impact" class="panel" aria-labelledby="impact-title">
+            <div class="panel-heading impact-heading">
+              <div>
+                <p class="eyebrow">Consecuencias</p>
+                <h2 id="impact-title">Impacto de una materia pendiente</h2>
+              </div>
+              <label class="impact-picker">
+                <span>Materia</span>
+                <select id="impactSubject"></select>
+              </label>
+            </div>
+            <canvas id="impactCanvas" aria-label="Grafico de materias afectadas por nivel"></canvas>
+            <div id="impactDetail" class="impact-detail"></div>
+          </section>
+
+          <section class="panel" aria-labelledby="alternatives-title">
+            <div class="panel-heading">
+              <p class="eyebrow">Decision</p>
+              <h2 id="alternatives-title">Alternativas de planificacion</h2>
+            </div>
+            <div id="alternatives" class="alternatives"></div>
+          </section>
+
+          <section class="panel report-panel" aria-labelledby="report-title">
+            <div class="panel-heading">
+              <p class="eyebrow">Entrega</p>
+              <h2 id="report-title">Resolucion del caso</h2>
+            </div>
+            <div id="report" class="report"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Datos base: asignaturas obligatorias y correlatividades del Plan 2023.</p>
+      <nav id="sources" aria-label="Fuentes"></nav>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="logic.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

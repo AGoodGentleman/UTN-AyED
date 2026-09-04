@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taller 05 - Graficos 15 al 25</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f7f4;
+      --fg: #1f2328;
+      --muted: #667085;
+      --panel: #ffffff;
+      --border: #d5d8dd;
+      --accent: #2563eb;
+      --accent-2: #c2410c;
+      --accent-3: #15803d;
+      --accent-4: #be123c;
+      --plot-bg: #fbfbf8;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #17181c;
+        --fg: #f1f5f9;
+        --muted: #aeb7c2;
+        --panel: #20232a;
+        --border: #343944;
+        --accent: #8ab4ff;
+        --accent-2: #ffb86b;
+        --accent-3: #8bd17c;
+        --accent-4: #ff8aa0;
+        --plot-bg: #111318;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .app {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: var(--panel);
+      padding: 14px clamp(14px, 3vw, 28px);
+      display: grid;
+      gap: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+      font-weight: 650;
+      letter-spacing: 0;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      gap: 12px;
+    }
+
+    label {
+      display: grid;
+      gap: 5px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      min-width: min(100%, 300px);
+    }
+
+    select,
+    button {
+      font: inherit;
+      color: var(--fg);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      min-height: 38px;
+    }
+
+    select {
+      padding: 0 36px 0 10px;
+      max-width: 100%;
+    }
+
+    button {
+      padding: 0 12px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      border-color: var(--accent);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+      gap: 16px;
+      padding: 16px clamp(12px, 2.5vw, 28px) 24px;
+      min-height: 0;
+    }
+
+    .plot-wrap {
+      position: relative;
+      min-height: 620px;
+      background: var(--plot-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    #plot {
+      position: absolute;
+      inset: 0;
+    }
+
+    .axis-guide {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      width: min(160px, 34vw);
+      height: auto;
+      color: var(--fg);
+      opacity: 0.88;
+      pointer-events: none;
+    }
+
+    .axis-guide marker path {
+      fill: currentColor;
+    }
+
+    aside {
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .info {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .info h2 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      font-weight: 650;
+    }
+
+    .info ul {
+      margin: 0;
+      padding-left: 19px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .formula {
+      font-family: Consolas, "SFMono-Regular", monospace;
+      color: var(--fg);
+    }
+
+    .error {
+      color: var(--accent-4);
+    }
+
+    @media (max-width: 860px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .plot-wrap {
+        min-height: 520px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        padding-inline: 12px;
+      }
+
+      .toolbar,
+      label,
+      button {
+        width: 100%;
+      }
+
+      .plot-wrap {
+        min-height: 470px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Taller 05: graficos de los ejercicios 15 al 25</h1>
+      <div class="toolbar">
+        <label>
+          Ejercicio
+          <select id="exercise"></select>
+        </label>
+        <button id="reset" type="button">Restablecer vista</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="plot-wrap">
+        <div id="plot" role="img" aria-label="Grafico del ejercicio seleccionado"></div>
+        <svg class="axis-guide" viewBox="0 0 160 140" aria-label="Terna derecha: z hacia arriba, y a la derecha, x abajo a la izquierda">
+          <defs>
+            <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L6,3 L0,6 Z"></path>
+            </marker>
+          </defs>
+          <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#axis-arrow)">
+            <path d="M70 70 L70 12"></path>
+            <path d="M70 70 L148 70"></path>
+            <path d="M70 70 L18 122"></path>
+          </g>
+          <g fill="currentColor" font-family="system-ui, sans-serif" font-size="15" font-style="italic">
+            <text x="76" y="18">z</text>
+            <text x="151" y="75">y</text>
+            <text x="7" y="132">x</text>
+          </g>
+        </svg>
+      </div>
+      <aside>
+        <section class="info">
+          <h2 id="subtitle">Detalle</h2>
+          <ul id="notes"></ul>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    const COLORS = {
+      surface: "#4c78a8",
+      curve1: "#f58518",
+      curve2: "#54a24b",
+      tangent: "#e45756",
+      point: "#b279a2",
+      plane: "#72b7b2"
+    };
+    const RIGHT_HAND_CAMERA = {
+      eye: { x: 2.17, y: 0.26, z: 0.26 },
+      up: { x: -0.120, y: 0.003, z: 0.993 },
+      center: { x: 0, y: 0, z: 0 },
+      projection: { type: "orthographic" }
+    };
+
+    const plot = document.getElementById("plot");
+    const select = document.getElementById("exercise");
+    const reset = document.getElementById("reset");
+    const notes = document.getElementById("notes");
+    const subtitle = document.getElementById("subtitle");
+
+    function cssVar(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    function linspace(min, max, count) {
+      const values = [];
+      const step = (max - min) / (count - 1);
+      for (let i = 0; i < count; i += 1) values.push(min + i * step);
+      return values;
+    }
+
+    function surfaceXY(xRange, yRange, n, fn, options = {}) {
+      const xs = linspace(xRange[0], xRange[1], n);
+      const ys = linspace(yRange[0], yRange[1], n);
+      const z = ys.map(y => xs.map(x => fn(x, y)));
+      return {
+        type: "surface",
+        x: xs,
+        y: ys,
+        z,
+        colorscale: options.colorscale || "Viridis",
+        opacity: options.opacity ?? 0.78,
+        showscale: options.showscale ?? false,
+        name: options.name || "superficie",
+        hovertemplate: "x=%{x:.3f}<br>y=%{y:.3f}<br>z=%{z:.3f}<extra></extra>"
+      };
+    }
+
+    function surfaceXZ(xRange, zRange, n, fn, options = {}) {
+      const xs = linspace(xRange[0], xRange[1], n);
+      const zs = linspace(zRange[0], zRange[1], n);
+      const x = [];
+      const y = [];
+      const z = [];
+      for (const zz of zs) {
+        x.push(xs.slice());
+        y.push(xs.map(xx => fn(xx, zz)));
+        z.push(xs.map(() => zz));
+      }
+      return {
+        type: "surface",
+        x,
+        y,
+        z,
+        colorscale: options.colorscale || "Viridis",
+        opacity: options.opacity ?? 0.78,
+        showscale: false,
+        name: options.name || "superficie",
+        hovertemplate: "x=%{x:.3f}<br>y=%{y:.3f}<br>z=%{z:.3f}<extra></extra>"
+      };
+    }
+
+    function planeX(x0, yRange, zRange, color = COLORS.plane) {
+      const ys = linspace(yRange[0], yRange[1], 2);
+      const zs = linspace(zRange[0], zRange[1], 2);
+      return {
+        type: "surface",
+        x: zs.map(() => ys.map(() => x0)),
+        y: zs.map(() => ys.slice()),
+        z: zs.map(z => ys.map(() => z)),
+        opacity: 0.18,
+        colorscale: [[0, color], [1, color]],
+        showscale: false,
+        hoverinfo: "skip",
+        name: `x=${x0}`
+      };
+    }
+
+    function planeY(y0, xRange, zRange, color = "#ff9da6") {
+      const xs = linspace(xRange[0], xRange[1], 2);
+      const zs = linspace(zRange[0], zRange[1], 2);
+      return {
+        type: "surface",
+        x: zs.map(() => xs.slice()),
+        y: zs.map(() => xs.map(() => y0)),
+        z: zs.map(z => xs.map(() => z)),
+        opacity: 0.18,
+        colorscale: [[0, color], [1, color]],
+        showscale: false,
+        hoverinfo: "skip",
+        name: `y=${y0}`
+      };
+    }
+
+    function line3d(x, y, z, name, color, dash = "solid") {
+      return {
+        type: "scatter3d",
+        mode: "lines",
+        x,
+        y,
+        z,
+        name,
+        line: { color, width: 7, dash },
+        hovertemplate: `${name}<br>x=%{x:.3f}<br>y=%{y:.3f}<br>z=%{z:.3f}<extra></extra>`
+      };
+    }
+
+    function point3d(x, y, z, name, color = COLORS.point) {
+      return {
+        type: "scatter3d",
+        mode: "markers+text",
+        x: [x],
+        y: [y],
+        z: [z],
+        name,
+        text: [name],
+        textposition: "top center",
+        marker: { size: 5, color },
+        hovertemplate: `${name}<br>x=${x}<br>y=${y}<br>z=${z}<extra></extra>`
+      };
+    }
+
+    function originValue(range) {
+      return range[0] <= 0 && 0 <= range[1] ? 0 : range[0];
+    }
+
+    function axisLine(start, end, label, color) {
+      return {
+        type: "scatter3d",
+        mode: "lines+text",
+        x: [start[0], end[0]],
+        y: [start[1], end[1]],
+        z: [start[2], end[2]],
+        text: ["", label],
+        textposition: "top center",
+        textfont: { color, size: 14 },
+        showlegend: false,
+        hoverinfo: "skip",
+        line: { color, width: 7 }
+      };
+    }
+
+    function coordinateAxes(layout) {
+      if (!layout.scene) return [];
+      const xRange = layout.scene.xaxis.range;
+      const yRange = layout.scene.yaxis.range;
+      const zRange = layout.scene.zaxis.range;
+      const start = [
+        originValue(xRange),
+        originValue(yRange),
+        originValue(zRange)
+      ];
+      const labels = layout._axisLabels || ["x", "y", "z"];
+      const axes = [
+        { label: labels[0], end: [xRange[1], start[1], start[2]] },
+        { label: labels[1], end: [start[0], yRange[1], start[2]] },
+        { label: labels[2], end: [start[0], start[1], zRange[1]] }
+      ];
+      const color = cssVar("--fg");
+      const traces = [];
+      for (const axis of axes) {
+        const delta = [
+          axis.end[0] - start[0],
+          axis.end[1] - start[1],
+          axis.end[2] - start[2]
+        ];
+        if (Math.abs(delta[0]) + Math.abs(delta[1]) + Math.abs(delta[2]) < 1e-9) continue;
+        traces.push(axisLine(start, axis.end, axis.label, color));
+      }
+      return traces;
+    }
+
+    function layout3d(title, ranges, labels = ["x", "y", "z"]) {
+      return {
+        title: { text: title, font: { size: 16 } },
+        _axisLabels: labels,
+        paper_bgcolor: "rgba(0,0,0,0)",
+        plot_bgcolor: "rgba(0,0,0,0)",
+        margin: { l: 0, r: 0, t: 46, b: 0 },
+        legend: { orientation: "h", x: 0.02, y: 0.02, bgcolor: "rgba(0,0,0,0)" },
+        font: { color: cssVar("--fg") },
+        scene: {
+          xaxis: { title: "", range: ranges.x, gridcolor: cssVar("--border"), zerolinecolor: cssVar("--fg") },
+          yaxis: { title: "", range: ranges.y, gridcolor: cssVar("--border"), zerolinecolor: cssVar("--fg") },
+          zaxis: { title: "", range: ranges.z, gridcolor: cssVar("--border"), zerolinecolor: cssVar("--fg") },
+          aspectmode: "cube",
+          camera: RIGHT_HAND_CAMERA,
+          bgcolor: "rgba(0,0,0,0)"
+        }
+      };
+    }
+
+    function plotConfig() {
+      return {
+        responsive: true,
+        displaylogo: false,
+        scrollZoom: true,
+        modeBarButtonsToRemove: ["lasso2d", "select2d"]
+      };
+    }
+
+    function e15() {
+      const xRange = [-1.5, 3.2];
+      const yRange = [-0.5, 4.7];
+      const zRange = [0, 24];
+      const x = linspace(xRange[0], xRange[1], 220);
+      const y = linspace(yRange[0], yRange[1], 220);
+      const s = linspace(-1.1, 1.1, 100);
+      return {
+        title: "E15 - z=2x^2+y^2",
+        traces: [
+          surfaceXY(xRange, yRange, 85, (xx, yy) => 2 * xx ** 2 + yy ** 2, { opacity: 0.58 }),
+          planeY(2, xRange, zRange),
+          planeX(1, yRange, zRange),
+          line3d(x, x.map(() => 2), x.map(xx => 2 * xx ** 2 + 4), "C1: y=2", COLORS.curve1),
+          line3d(y.map(() => 1), y, y.map(yy => 2 + yy ** 2), "C2: x=1", COLORS.curve2),
+          line3d(s.map(v => 1 + v), s.map(() => 2), s.map(v => 6 + 4 * v), "tangente C1", COLORS.tangent),
+          line3d(s.map(() => 1), s.map(v => 2 + v), s.map(v => 6 + 4 * v), "tangente C2", COLORS.tangent, "dash"),
+          point3d(1, 2, 6, "P")
+        ],
+        layout: layout3d("E15 - Superficie, curvas de interseccion y tangentes", { x: xRange, y: yRange, z: zRange }),
+        notes: [
+          ["Plano paralelo a XZ", "y=2, curva C1=(t,2,2t^2+4), pendiente 4."],
+          ["Plano paralelo a YZ", "x=1, curva C2=(1,t,2+t^2), pendiente 4."],
+          ["Tangentes", "r1=(1,2,6)+s(1,0,4), r2=(1,2,6)+s(0,1,4)."]
+        ]
+      };
+    }
+
+    function e16() {
+      const xRange = [0, 6];
+      const yRange = [-1, 5];
+      const zRange = [0, 10];
+      const x = linspace(xRange[0], xRange[1], 220);
+      const y = linspace(yRange[0], yRange[1], 220);
+      const s = linspace(-1.25, 1.25, 100);
+      return {
+        title: "E16 - 36z=4x^2+9y^2",
+        traces: [
+          surfaceXY(xRange, yRange, 85, (xx, yy) => xx ** 2 / 9 + yy ** 2 / 4, { opacity: 0.58 }),
+          planeX(3, yRange, zRange),
+          planeY(2, xRange, zRange),
+          line3d(y.map(() => 3), y, y.map(yy => 1 + yy ** 2 / 4), "C1: x=3", COLORS.curve1),
+          line3d(x, x.map(() => 2), x.map(xx => xx ** 2 / 9 + 1), "C2: y=2", COLORS.curve2),
+          line3d(s.map(() => 3), s.map(v => 2 + v), s.map(v => 2 + v), "tangente C1", COLORS.tangent),
+          line3d(s.map(v => 3 + v), s.map(() => 2), s.map(v => 2 + (2 / 3) * v), "tangente C2", COLORS.tangent, "dash"),
+          point3d(3, 2, 2, "P")
+        ],
+        layout: layout3d("E16 - Superficie, curvas de interseccion y tangentes", { x: xRange, y: yRange, z: zRange }),
+        notes: [
+          ["Plano x=3", "C1=(3,t,1+t^2/4), pendiente 1 en P."],
+          ["Plano y=2", "C2=(t,2,t^2/9+1), pendiente 2/3 en P."],
+          ["Tangentes", "r1=(3,2,2)+s(0,1,1), r2=(3,2,2)+s(1,0,2/3)."]
+        ]
+      };
+    }
+
+    function e17() {
+      const range = [-6, 6];
+      const surface = surfaceXY(range, range, 100, (x, y) => {
+        const r = Math.hypot(x, y);
+        return r < 0.7 ? null : 1 / r;
+      }, { colorscale: "Magma", opacity: 0.82 });
+      return {
+        title: "E17 - Potencial electrostatico",
+        traces: [
+          surface,
+          point3d(3, 4, 0.2, "P(3,4)"),
+          line3d([3, 4.2], [4, 4], [0.2, 0.2], "direccion x", COLORS.curve1),
+          line3d([3, 3], [4, 5.2], [0.2, 0.2], "direccion y", COLORS.curve2)
+        ],
+        layout: layout3d("E17 - U=1/sqrt(x^2+y^2)", { x: range, y: range, z: [0, 1.15] }),
+        notes: [
+          ["Punto", "U(3,4)=1/5."],
+          ["Tasas pedidas", "Ux(3,4)=-3/125=-0.024, Uy(3,4)=-4/125=-0.032."]
+        ]
+      };
+    }
+
+    function e18() {
+      const lRange = [100, 2000];
+      const kRange = [100, 1200];
+      return {
+        title: "E18 - Produccion Cobb-Douglas",
+        traces: [
+          surfaceXY(lRange, kRange, 90, (l, k) => 100 * l ** 0.75 * k ** 0.25, { opacity: 0.82 }),
+          point3d(1000, 500, 100 * 1000 ** 0.75 * 500 ** 0.25, "base")
+        ],
+        layout: layout3d("E18 - P(L,K)=100L^0.75K^0.25", { x: lRange, y: kRange, z: [0, 170000] }, ["L", "K", "P"]),
+        notes: [
+          ["Base", "L=1000, K=500."],
+          ["Productividades marginales", "P_L=63.0689 y P_K=42.0459 aproximadamente."]
+        ]
+      };
+    }
+
+    function e19a() {
+      const range = [-2, 2];
+      return {
+        title: "E19.a - |y|",
+        traces: [surfaceXY(range, range, 90, (x, y) => Math.abs(y), { opacity: 0.82 }), point3d(0, 0, 0, "O")],
+        layout: layout3d("E19.a - z=sqrt(y^2)=|y|", { x: range, y: range, z: [0, 2.2] }),
+        notes: [["Lectura visual", "La superficie es continua, pero tiene quiebre respecto de y en el origen."]]
+      };
+    }
+
+    function e19b() {
+      const range = [-2, 2];
+      return {
+        title: "E19.b - cbrt(x^2)",
+        traces: [surfaceXY(range, range, 90, (x) => Math.cbrt(x ** 2), { opacity: 0.82 }), point3d(0, 0, 0, "O")],
+        layout: layout3d("E19.b - z=cbrt(x^2)", { x: range, y: range, z: [0, 1.8] }),
+        notes: [["Lectura visual", "La cuspide aparece en la direccion x; la derivada parcial respecto de x falla en el origen."]]
+      };
+    }
+
+    function e19c() {
+      const range = [-2, 2];
+      return {
+        title: "E19.c - 3x^3/(x^2+y^2)",
+        traces: [
+          surfaceXY(range, range, 100, (x, y) => {
+            const d = x ** 2 + y ** 2;
+            return d < 1e-8 ? 0 : 3 * x ** 3 / d;
+          }, { colorscale: "RdBu", opacity: 0.82 }),
+          point3d(0, 0, 0, "O")
+        ],
+        layout: layout3d("E19.c - f=3x^3/(x^2+y^2), f(0,0)=0", { x: range, y: range, z: [-3, 3] }),
+        notes: [["Origen", "La funcion tiende a 0 hacia el origen; f_x(0,0)=3 y f_y(0,0)=0."]]
+      };
+    }
+
+    function e19d() {
+      const range = [-2, 2];
+      const t = linspace(-2, 2, 240);
+      return {
+        title: "E19.d - funcion por ejes",
+        traces: [
+          surfaceXY(range, range, 2, () => 0, { opacity: 0.18, colorscale: [[0, COLORS.surface], [1, COLORS.surface]] }),
+          line3d(t, t.map(() => 0), t.map(() => 1), "eje x: valor 1", COLORS.curve1),
+          line3d(t.map(() => 0), t, t.map(() => 1), "eje y: valor 1", COLORS.curve2),
+          point3d(0, 0, 1, "O")
+        ],
+        layout: layout3d("E19.d - f=1 si xy=0, f=0 si xy!=0", { x: range, y: range, z: [-0.15, 1.25] }),
+        notes: [["Discontinuidad", "Cerca del origen aparecen valores 0 fuera de los ejes y 1 sobre los ejes."]]
+      };
+    }
+
+    function e21() {
+      const xRange = [-1.4, 1.4];
+      const yRange = [-1.7, 1.7];
+      return {
+        title: "E21 - derivadas mixtas",
+        traces: [surfaceXY(xRange, yRange, 95, (x, y) => x ** 2 * y ** 2 - y ** 3 + 3 * x ** 4 + 5, { opacity: 0.82 })],
+        layout: layout3d("E21 - z=x^2y^2-y^3+3x^4+5", { x: xRange, y: yRange, z: [0, 24] }),
+        notes: [["Apoyo visual", "El ejercicio pide verificar Schwarz; el grafico ayuda a ubicar la superficie."]]
+      };
+    }
+
+    function e23() {
+      const xRange = [-2.5, 2.5];
+      const zRange = [0.25, 3.7];
+      const trace = surfaceXZ(xRange, zRange, 100, (x, z) => x * z - Math.log(z) - x, { colorscale: "Plasma" });
+      return {
+        title: "E23 - superficie implicita",
+        traces: [trace],
+        layout: layout3d("E23 - xz-ln(z)=x+y", { x: xRange, y: [-5.3, 5.3], z: zRange }),
+        notes: [["Parametrizacion", "Se usa y=xz-ln(z)-x con z>0, porque aparece ln(z)."]]
+      };
+    }
+
+    function e24() {
+      const xRange = [-2.2, 2.2];
+      const zRange = [-0.5, 2.3];
+      const trace = surfaceXZ(xRange, zRange, 100, (x, z) => {
+        const y = x * (2 * z - 1) / (1 + z ** 3);
+        return Math.abs(y) > 3.5 ? null : y;
+      }, { colorscale: "Cividis" });
+      return {
+        title: "E24 - superficie implicita",
+        traces: [trace, point3d(1, 1, 1, "punto dado", COLORS.tangent)],
+        layout: layout3d("E24 - x+y+yz^3-2xz=0", { x: xRange, y: [-3.5, 3.5], z: zRange }),
+        notes: [
+          ["Advertencia", "Con la ecuacion del PDF, F(1,1,1)=1; el punto dado no pertenece a la superficie."],
+          ["Parametrizacion", "Despejando y: y=x(2z-1)/(1+z^3)."]
+        ]
+      };
+    }
+
+    function resistance(r1, r2, r3) {
+      return 1 / (1 / r1 + 1 / r2 + 1 / r3);
+    }
+
+    function e25() {
+      const base = resistance(15, 30, 45);
+      const xs = linspace(5, 80, 350);
+      const curves = [
+        { name: "varia R1", y: xs.map(v => resistance(v, 30, 45)), color: COLORS.curve1 },
+        { name: "varia R2", y: xs.map(v => resistance(15, v, 45)), color: COLORS.curve2 },
+        { name: "varia R3", y: xs.map(v => resistance(15, 30, v)), color: COLORS.tangent }
+      ];
+      const traces = curves.map(c => ({
+        type: "scatter",
+        mode: "lines",
+        x: xs,
+        y: c.y,
+        name: c.name,
+        line: { color: c.color, width: 3 },
+        xaxis: "x",
+        yaxis: "y",
+        hovertemplate: "%{x:.2f} ohm<br>R=%{y:.4f} ohm<extra></extra>"
+      }));
+      traces.push({
+        type: "bar",
+        x: ["dR/dR1", "dR/dR2", "dR/dR3"],
+        y: [base ** 2 / 15 ** 2, base ** 2 / 30 ** 2, base ** 2 / 45 ** 2],
+        marker: { color: [COLORS.curve1, COLORS.curve2, COLORS.tangent] },
+        name: "sensibilidad",
+        xaxis: "x2",
+        yaxis: "y2",
+        hovertemplate: "%{x}<br>%{y:.5f}<extra></extra>"
+      });
+      return {
+        title: "E25 - resistores en paralelo",
+        traces,
+        layout: {
+          title: { text: "E25 - Resistencia total y sensibilidad", font: { size: 16 } },
+          paper_bgcolor: "rgba(0,0,0,0)",
+          plot_bgcolor: "rgba(0,0,0,0)",
+          margin: { l: 52, r: 24, t: 54, b: 58 },
+          font: { color: cssVar("--fg") },
+          grid: { rows: 1, columns: 2, pattern: "independent" },
+          xaxis: { title: "resistencia variable (ohm)", gridcolor: cssVar("--border") },
+          yaxis: { title: "R total (ohm)", gridcolor: cssVar("--border") },
+          xaxis2: { title: "derivada parcial", gridcolor: cssVar("--border") },
+          yaxis2: { title: "ohm / ohm", gridcolor: cssVar("--border") },
+          legend: { orientation: "h", x: 0, y: -0.18, bgcolor: "rgba(0,0,0,0)" },
+          shapes: [{ type: "line", xref: "paper", x0: 0, x1: 0.45, yref: "y", y0: base, y1: base, line: { color: cssVar("--muted"), dash: "dot" } }]
+        },
+        notes: [
+          ["Base", "R=90/11=8.1818 ohm para R1=15, R2=30, R3=45."],
+          ["Mayor cambio", "Aumentar R1 produce mayor variacion: dR/dR1=36/121."]
+        ]
+      };
+    }
+
+    const EXERCISES = [
+      { id: "15", label: "15 - superficie y tangentes", build: e15 },
+      { id: "16", label: "16 - superficie y tangentes", build: e16 },
+      { id: "17", label: "17 - potencial electrostatico", build: e17 },
+      { id: "18", label: "18 - Cobb-Douglas", build: e18 },
+      { id: "19a", label: "19.a - |y|", build: e19a },
+      { id: "19b", label: "19.b - cbrt(x^2)", build: e19b },
+      { id: "19c", label: "19.c - cociente", build: e19c },
+      { id: "19d", label: "19.d - ejes", build: e19d },
+      { id: "21", label: "21 - derivadas mixtas", build: e21 },
+      { id: "23", label: "23 - implicita", build: e23 },
+      { id: "24", label: "24 - implicita", build: e24 },
+      { id: "25", label: "25 - resistores", build: e25 }
+    ];
+
+    function setNotes(item) {
+      subtitle.textContent = item.title;
+      notes.replaceChildren();
+      for (const [head, body] of item.notes) {
+        const li = document.createElement("li");
+        const strong = document.createElement("strong");
+        strong.textContent = `${head}: `;
+        const span = document.createElement("span");
+        span.textContent = body;
+        li.append(strong, span);
+        notes.appendChild(li);
+      }
+    }
+
+    function draw() {
+      if (!window.Plotly) {
+        plot.innerHTML = '<div class="info error">No se pudo cargar Plotly. Conectate a internet o usa el script Python.</div>';
+        return;
+      }
+      const chosen = EXERCISES.find(item => item.id === select.value) || EXERCISES[0];
+      const built = chosen.build();
+      setNotes(built);
+      const layout = { ...built.layout };
+      const data = [...built.traces, ...coordinateAxes(layout)];
+      delete layout._axisLabels;
+      Plotly.react(plot, data, layout, plotConfig());
+    }
+
+    for (const item of EXERCISES) {
+      const option = document.createElement("option");
+      option.value = item.id;
+      option.textContent = item.label;
+      select.appendChild(option);
+    }
+
+    select.addEventListener("change", draw);
+    reset.addEventListener("click", draw);
+    window.addEventListener("resize", () => {
+      if (window.Plotly) Plotly.Plots.resize(plot);
+    });
+
+    draw();
+  </script>
+</body>
+</html>
