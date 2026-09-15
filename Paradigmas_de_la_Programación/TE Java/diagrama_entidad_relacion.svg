@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1850" height="1190" viewBox="0 0 1850 1190">
+<title>Diagrama Entidad-Relación</title>
+<defs>
+  <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+    <path d="M 0 0 L 12 6 L 0 12 z" fill="#40576b"/>
+  </marker>
+  <marker id="openTriangle" markerWidth="18" markerHeight="18" refX="16" refY="9" orient="auto" markerUnits="strokeWidth">
+    <path d="M 1 1 L 17 9 L 1 17 z" fill="#ffffff" stroke="#40576b" stroke-width="2"/>
+  </marker>
+  <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#28465c" flood-opacity="0.15"/>
+  </filter>
+  <style>
+    text { font-family: "Segoe UI", Arial, sans-serif; }
+  </style>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="925.0" y="46" text-anchor="middle" font-size="30" font-weight="700" font-style="normal" fill="#1f2933">Diagrama Entidad-Relación</text>
+<text x="925.0" y="76" text-anchor="middle" font-size="17" font-weight="400" font-style="normal" fill="#52616b">Modelo de datos para MySQL</text>
+<rect x="65" y="135" width="330" height="128" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.1"/>
+<rect x="65" y="135" width="330" height="40" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="65" y1="175" x2="395" y2="175" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="230.0" y="162" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">ESPECIALIDAD</text>
+<text x="81" y="201" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">PK id_especialidad</text>
+<text x="81" y="221" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">UQ nombre</text>
+<text x="81" y="241" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">descripcion</text>
+<rect x="760" y="105" width="360" height="248" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.1"/>
+<rect x="760" y="105" width="360" height="40" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="760" y1="145" x2="1120" y2="145" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="940.0" y="132" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">PROFESIONAL</text>
+<text x="776" y="171" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">PK id_profesional</text>
+<text x="776" y="191" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">UQ matricula</text>
+<text x="776" y="211" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">UQ DNI</text>
+<text x="776" y="231" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">nombre</text>
+<text x="776" y="251" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">apellido</text>
+<text x="776" y="271" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">telefono</text>
+<text x="776" y="291" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">email</text>
+<text x="776" y="311" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">activo</text>
+<text x="776" y="331" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">FK id_especialidad</text>
+<rect x="490" y="340" width="390" height="168" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.1"/>
+<rect x="490" y="340" width="390" height="40" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="490" y1="380" x2="880" y2="380" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="685.0" y="367" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">TIPO_CIRUGIA</text>
+<text x="506" y="406" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">PK id_tipo_cirugia</text>
+<text x="506" y="426" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">UQ(nombre, id_especialidad)</text>
+<text x="506" y="446" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">descripcion</text>
+<text x="506" y="466" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">duracion_estimada_minutos</text>
+<text x="506" y="486" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">FK id_especialidad</text>
+<rect x="455" y="600" width="360" height="228" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.1"/>
+<rect x="455" y="600" width="360" height="40" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="455" y1="640" x2="815" y2="640" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="635.0" y="627" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">PACIENTE</text>
+<text x="471" y="666" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">PK id_paciente</text>
+<text x="471" y="686" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">UQ DNI</text>
+<text x="471" y="706" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">nombre</text>
+<text x="471" y="726" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">apellido</text>
+<text x="471" y="746" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">fecha_nacimiento</text>
+<text x="471" y="766" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">telefono</text>
+<text x="471" y="786" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">email</text>
+<text x="471" y="806" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">activo</text>
+<rect x="470" y="875" width="330" height="148" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.1"/>
+<rect x="470" y="875" width="330" height="40" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="470" y1="915" x2="800" y2="915" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="635.0" y="902" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">QUIROFANO</text>
+<text x="486" y="941" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">PK id_quirofano</text>
+<text x="486" y="961" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">UQ numero</text>
+<text x="486" y="981" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">ubicacion</text>
+<text x="486" y="1001" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">estado</text>
+<rect x="1080" y="560" width="390" height="228" rx="16" fill="#e8f2f7" stroke="#40576b" stroke-width="2.1"/>
+<rect x="1080" y="560" width="390" height="40" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="1080" y1="600" x2="1470" y2="600" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1275.0" y="587" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">TURNO_QUIRURGICO</text>
+<text x="1096" y="626" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">PK id_turno</text>
+<text x="1096" y="646" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">fecha_hora_inicio</text>
+<text x="1096" y="666" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">fecha_hora_fin</text>
+<text x="1096" y="686" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">estado</text>
+<text x="1096" y="706" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">observaciones</text>
+<text x="1096" y="726" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">FK id_paciente</text>
+<text x="1096" y="746" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">FK id_quirofano</text>
+<text x="1096" y="766" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">FK id_tipo_cirugia</text>
+<rect x="1535" y="405" width="300" height="128" rx="16" fill="#fbf7ea" stroke="#40576b" stroke-width="2.1"/>
+<rect x="1535" y="405" width="300" height="40" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="1535" y1="445" x2="1835" y2="445" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1685.0" y="432" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">TURNO_PROFESIONAL</text>
+<text x="1551" y="471" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">PK, FK id_turno</text>
+<text x="1551" y="491" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">PK, FK id_profesional</text>
+<text x="1551" y="511" text-anchor="start" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">rol</text>
+<polyline points="395,199.0 565,199.0 760,229.0" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="428.0" y="173.0" width="44" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="450" y="185.0" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<rect x="679.4" y="205.0" width="51.2" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="705" y="217.0" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">0..N</text>
+<polyline points="395,199.0 430,424.0 490,424.0" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="428.0" y="399.0" width="44" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="450" y="411.0" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<rect x="409.4" y="400.0" width="51.2" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="435" y="412.0" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">0..N</text>
+<polyline points="880,424.0 1010,445 1080,632" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="913.0" y="419" width="44" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="935" y="431" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<rect x="994.4" y="622" width="51.2" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1020" y="634" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">0..N</text>
+<polyline points="815,714.0 980,714.0 1080,700" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="848.0" y="690.0" width="44" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="870" y="702.0" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<rect x="994.4" y="688" width="51.2" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1020" y="700" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">0..N</text>
+<polyline points="800,949.0 980,949.0 1080,770" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="833.0" y="923.0" width="44" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="855" y="935.0" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<rect x="994.4" y="758" width="51.2" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1020" y="770" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">0..N</text>
+<polyline points="1470,674.0 1510,645 1535,469.0" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="1503.0" y="618" width="44" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1525" y="630" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<rect x="1454.4" y="493.0" width="51.2" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1480" y="505.0" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">1..N</text>
+<polyline points="1120,229.0 1355,229.0 1535,430" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="1153.0" y="202.0" width="44" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1175" y="214.0" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<rect x="1454.4" y="428" width="51.2" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1480" y="440" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">0..N</text>
+<rect x="1035" y="940" width="760" height="130" rx="12" fill="#fbf7ea" stroke="#d6c997" stroke-width="1.8"/>
+<text x="1060" y="970" text-anchor="start" font-size="17" font-weight="700" font-style="normal" fill="#1f2933">Reglas de negocio</text>
+<text x="1060" y="987.0" text-anchor="start" font-size="16" font-weight="400" fill="#1f2933"><tspan x="1060" dy="0">QUIROFANO.estado usa HABILITADO, MANTENIMIENTO o FUERA_DE_SERVICIO.</tspan><tspan x="1060" dy="23">La disponibilidad horaria se calcula revisando turnos existentes.</tspan><tspan x="1060" dy="23">Cada turno debe tener exactamente un profesional con rol CIRUJANO_PRINCIPAL.</tspan></text>
+<text x="925.0" y="1140" text-anchor="middle" font-size="17" font-weight="400" font-style="normal" fill="#52616b">Figura 2. TURNO_PROFESIONAL resuelve la relación muchos a muchos entre turnos y profesionales.</text>
+</svg>

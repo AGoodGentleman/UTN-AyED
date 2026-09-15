@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1840" viewBox="0 0 2300 1840">
+<title>Diagrama de clases</title>
+<defs>
+  <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+    <path d="M 0 0 L 12 6 L 0 12 z" fill="#40576b"/>
+  </marker>
+  <marker id="openTriangle" markerWidth="18" markerHeight="18" refX="16" refY="9" orient="auto" markerUnits="strokeWidth">
+    <path d="M 1 1 L 17 9 L 1 17 z" fill="#ffffff" stroke="#40576b" stroke-width="2"/>
+  </marker>
+  <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#28465c" flood-opacity="0.15"/>
+  </filter>
+  <style>
+    text { font-family: "Segoe UI", Arial, sans-serif; }
+  </style>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="1150.0" y="46" text-anchor="middle" font-size="30" font-weight="700" font-style="normal" fill="#1f2933">Diagrama de Clases</text>
+<text x="1150.0" y="76" text-anchor="middle" font-size="17" font-weight="400" font-style="normal" fill="#52616b">Dominio, enumeraciones, DAO, servicio y conexión</text>
+<rect x="35" y="95" width="2230" height="1040" rx="18" fill="#fbfdff" stroke="#eef3f6" stroke-width="2.0"/>
+<text x="80" y="125" text-anchor="start" font-size="18" font-weight="700" font-style="normal" fill="#52616b">Paquete dominio</text>
+<rect x="80" y="160" width="360" height="246" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="80" y="160" width="360" height="50" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="80" y1="210" x2="440" y2="210" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="260.0" y="180" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">&lt;&lt;abstract&gt;&gt;</text>
+<text x="260.0" y="200" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">Persona</text>
+<text x="94" y="233" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- id: int</text>
+<text x="94" y="254" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- dni: String</text>
+<text x="94" y="275" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- nombre: String</text>
+<text x="94" y="296" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- apellido: String</text>
+<text x="94" y="317" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- telefono: String</text>
+<text x="94" y="338" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- email: String</text>
+<line x1="80" y1="350" x2="440" y2="350" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="94" y="373" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ getNombreCompleto(): String</text>
+<text x="94" y="394" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ validar(): boolean</text>
+<rect x="80" y="515" width="360" height="190" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="80" y="515" width="360" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="80" y1="551" x2="440" y2="551" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="260.0" y="539" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">Paciente</text>
+<text x="94" y="574" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- fechaNacimiento: LocalDate</text>
+<text x="94" y="595" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- activo: boolean</text>
+<line x1="80" y1="607" x2="440" y2="607" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="94" y="630" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ calcularEdad(): int</text>
+<text x="94" y="651" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ activar(): void</text>
+<text x="94" y="672" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ desactivar(): void</text>
+<text x="94" y="693" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ validar(): boolean</text>
+<rect x="500" y="515" width="390" height="190" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="500" y="515" width="390" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="500" y1="551" x2="890" y2="551" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="695.0" y="539" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">Profesional</text>
+<text x="514" y="574" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- matricula: String</text>
+<text x="514" y="595" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- especialidad: Especialidad</text>
+<text x="514" y="616" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- activo: boolean</text>
+<line x1="500" y1="628" x2="890" y2="628" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="514" y="651" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ activar(): void</text>
+<text x="514" y="672" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ desactivar(): void</text>
+<text x="514" y="693" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ validar(): boolean</text>
+<rect x="500" y="820" width="360" height="148" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="500" y="820" width="360" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="500" y1="856" x2="860" y2="856" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="680.0" y="844" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">Especialidad</text>
+<text x="514" y="879" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- id: int</text>
+<text x="514" y="900" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- nombre: String</text>
+<text x="514" y="921" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- descripcion: String</text>
+<line x1="500" y1="933" x2="860" y2="933" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="514" y="956" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ validar(): boolean</text>
+<rect x="940" y="145" width="630" height="379" rx="16" fill="#e8f2f7" stroke="#40576b" stroke-width="2.2"/>
+<rect x="940" y="145" width="630" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="940" y1="181" x2="1570" y2="181" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1255.0" y="169" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">TurnoQuirurgico</text>
+<text x="954" y="204" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- id: int</text>
+<text x="954" y="225" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- fechaHoraInicio: LocalDateTime</text>
+<text x="954" y="246" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- fechaHoraFin: LocalDateTime</text>
+<text x="954" y="267" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- estado: EstadoTurno</text>
+<text x="954" y="288" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- observaciones: String</text>
+<text x="954" y="309" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- paciente: Paciente</text>
+<text x="954" y="330" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- quirofano: Quirofano</text>
+<text x="954" y="351" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- tipoCirugia: TipoCirugia</text>
+<text x="954" y="372" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- participaciones: List&lt;ParticipacionProfesional&gt;</text>
+<line x1="940" y1="384" x2="1570" y2="384" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="954" y="407" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ agregarProfesional(profesional: Profesional, rol: RolProfesional): void</text>
+<text x="954" y="428" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ cancelar(motivo: String): void</text>
+<text x="954" y="449" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ reprogramar(inicio: LocalDateTime, fin: LocalDateTime, quirofano:</text>
+<text x="954" y="470" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">  Quirofano): void</text>
+<text x="954" y="491" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ seSuperpone(inicio: LocalDateTime, fin: LocalDateTime): boolean</text>
+<text x="954" y="512" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ validar(): boolean</text>
+<rect x="980" y="690" width="520" height="127" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="980" y="690" width="520" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="980" y1="726" x2="1500" y2="726" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1240.0" y="714" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">ParticipacionProfesional</text>
+<text x="994" y="749" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- profesional: Profesional</text>
+<text x="994" y="770" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- rol: RolProfesional</text>
+<line x1="980" y1="782" x2="1500" y2="782" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="994" y="805" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ validar(): boolean</text>
+<rect x="900" y="895" width="500" height="211" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="900" y="895" width="500" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="900" y1="931" x2="1400" y2="931" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1150.0" y="919" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">TipoCirugia</text>
+<text x="914" y="954" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- id: int</text>
+<text x="914" y="975" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- nombre: String</text>
+<text x="914" y="996" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- descripcion: String</text>
+<text x="914" y="1017" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- duracionEstimadaMinutos: int</text>
+<text x="914" y="1038" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- especialidad: Especialidad</text>
+<line x1="900" y1="1050" x2="1400" y2="1050" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="914" y="1073" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ calcularHoraFin(inicio: LocalDateTime): LocalDateTime</text>
+<text x="914" y="1094" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ validar(): boolean</text>
+<rect x="1460" y="895" width="420" height="211" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="1460" y="895" width="420" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="1460" y1="931" x2="1880" y2="931" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1670.0" y="919" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">Quirofano</text>
+<text x="1474" y="954" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- id: int</text>
+<text x="1474" y="975" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- numero: String</text>
+<text x="1474" y="996" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- ubicacion: String</text>
+<text x="1474" y="1017" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- estado: EstadoQuirofano</text>
+<line x1="1460" y1="1029" x2="1880" y2="1029" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1474" y="1052" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ estaHabilitado(): boolean</text>
+<text x="1474" y="1073" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ cambiarEstado(estado: EstadoQuirofano): void</text>
+<text x="1474" y="1094" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ validar(): boolean</text>
+<rect x="1605" y="745" width="320" height="85" rx="16" fill="#fbf7ea" stroke="#40576b" stroke-width="2.2"/>
+<rect x="1605" y="745" width="320" height="50" rx="16" fill="#fbf7ea" stroke="#40576b" stroke-width="0"/>
+<line x1="1605" y1="795" x2="1925" y2="795" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1765.0" y="765" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">&lt;&lt;interface&gt;&gt;</text>
+<text x="1765.0" y="785" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">Validable</text>
+<text x="1619" y="818" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ validar(): boolean</text>
+<rect x="2000" y="200" width="250" height="169" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="2000" y="200" width="250" height="50" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="2000" y1="250" x2="2250" y2="250" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="2125.0" y="220" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="2125.0" y="240" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">EstadoTurno</text>
+<text x="2014" y="273" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">PROGRAMADO</text>
+<text x="2014" y="294" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">CONFIRMADO</text>
+<text x="2014" y="315" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">EN_CURSO</text>
+<text x="2014" y="336" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">FINALIZADO</text>
+<text x="2014" y="357" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">CANCELADO</text>
+<rect x="2000" y="570" width="250" height="127" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="2000" y="570" width="250" height="50" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="2000" y1="620" x2="2250" y2="620" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="2125.0" y="590" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="2125.0" y="610" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">EstadoQuirofano</text>
+<text x="2014" y="643" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">HABILITADO</text>
+<text x="2014" y="664" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">MANTENIMIENTO</text>
+<text x="2014" y="685" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">FUERA_DE_SERVICIO</text>
+<rect x="2000" y="870" width="250" height="148" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="2000" y="870" width="250" height="50" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="2000" y1="920" x2="2250" y2="920" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="2125.0" y="890" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="2125.0" y="910" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">RolProfesional</text>
+<text x="2014" y="943" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">CIRUJANO_PRINCIPAL</text>
+<text x="2014" y="964" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">CIRUJANO_ASISTENTE</text>
+<text x="2014" y="985" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">ANESTESIOLOGO</text>
+<text x="2014" y="1006" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">INSTRUMENTADOR</text>
+<line x1="260.0" y1="515" x2="260.0" y2="406" stroke="#40576b" stroke-width="2.2" fill="none" marker-end="url(#openTriangle)"/>
+<line x1="695.0" y1="515" x2="260.0" y2="406" stroke="#40576b" stroke-width="2.2" fill="none" marker-end="url(#openTriangle)"/>
+<polyline points="440,610.0 470,665 850,665 940,462" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="441.0" y="639" width="44" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="463" y="650" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<rect x="885.5" y="441" width="49.0" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="910" y="452" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">0..*</text>
+<polyline points="1255.0,524 1240.0,690" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<polygon points="1255.0,516 1268.0,529 1255.0,542 1242.0,529" fill="#40576b" stroke="#40576b" stroke-width="1.6"/>
+<rect x="1213.0" y="551" width="44" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1235.0" y="562" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<rect x="1243.5" y="667" width="49.0" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1268.0" y="678" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">1..*</text>
+<polyline points="890,610.0 930,610.0 980,753.5" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="888.0" y="585.0" width="44" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="910" y="596.0" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<rect x="925.5" y="730.5" width="49.0" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="950" y="741.5" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">0..*</text>
+<polyline points="695.0,705 680.0,820" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="698.5" y="712" width="49.0" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="723.0" y="723" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">0..*</text>
+<rect x="694.0" y="797" width="44" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="716.0" y="808" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<polyline points="860,894.0 880,894.0 900,1000.5" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="861.0" y="868.0" width="44" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="883" y="879.0" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<rect x="843.5" y="974.5" width="49.0" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="868" y="985.5" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">0..*</text>
+<polyline points="1075,524 860,760 1150.0,895" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="880.5" y="739" width="49.0" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="905" y="750" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">0..*</text>
+<rect x="1078.0" y="872" width="44" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1100.0" y="883" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<polyline points="1570,334.5 1640,615 1670.0,895" fill="none" stroke="#40576b" stroke-width="2.2"/>
+<rect x="1570.5" y="604" width="49.0" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1595" y="615" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">0..*</text>
+<rect x="1678.0" y="872" width="44" height="23" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1700.0" y="883" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">1</text>
+<polyline points="440,283.0 740,283.0 1605,787.5 1605,787.5" fill="none" stroke="#40576b" stroke-width="1.8" stroke-dasharray="10 8" marker-end="url(#openTriangle)"/>
+<polyline points="1570,334.5 1605,334.5 1605,787.5" fill="none" stroke="#40576b" stroke-width="1.8" stroke-dasharray="10 8" marker-end="url(#openTriangle)"/>
+<line x1="1400" y1="1000.5" x2="1605" y2="787.5" stroke="#40576b" stroke-width="1.8" fill="none" stroke-dasharray="10 8" marker-end="url(#openTriangle)"/>
+<line x1="1460" y1="1000.5" x2="1605" y2="787.5" stroke="#40576b" stroke-width="1.8" fill="none" stroke-dasharray="10 8" marker-end="url(#openTriangle)"/>
+<line x1="1500" y1="753.5" x2="1605" y2="787.5" stroke="#40576b" stroke-width="1.8" fill="none" stroke-dasharray="10 8" marker-end="url(#openTriangle)"/>
+<line x1="1570" y1="334.5" x2="2000" y2="284.5" stroke="#40576b" stroke-width="2.0" fill="none" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+<line x1="1880" y1="1000.5" x2="2000" y2="633.5" stroke="#40576b" stroke-width="2.0" fill="none" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+<line x1="1500" y1="753.5" x2="2000" y2="944.0" stroke="#40576b" stroke-width="2.0" fill="none" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+<rect x="35" y="1190" width="2230" height="560" rx="18" fill="#fbfdff" stroke="#eef3f6" stroke-width="2.0"/>
+<text x="80" y="1220" text-anchor="start" font-size="18" font-weight="700" font-style="normal" fill="#52616b">Paquete persistencia y lógica de negocio</text>
+<rect x="70" y="1270" width="640" height="337" rx="16" fill="#e8f2f7" stroke="#40576b" stroke-width="2.2"/>
+<rect x="70" y="1270" width="640" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="70" y1="1306" x2="710" y2="1306" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="390.0" y="1294" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">TurnoService</text>
+<text x="84" y="1329" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- pacienteDAO: PacienteDAO</text>
+<text x="84" y="1350" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- profesionalDAO: ProfesionalDAO</text>
+<text x="84" y="1371" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- quirofanoDAO: QuirofanoDAO</text>
+<text x="84" y="1392" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- tipoCirugiaDAO: TipoCirugiaDAO</text>
+<text x="84" y="1413" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- turnoDAO: TurnoDAO</text>
+<line x1="70" y1="1425" x2="710" y2="1425" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="84" y="1448" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ programarTurno(pacienteId: int, tipoId: int, quirofanoId: int, inicio:</text>
+<text x="84" y="1469" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">  LocalDateTime, profesionales: List&lt;ParticipacionProfesional&gt;):</text>
+<text x="84" y="1490" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">  TurnoQuirurgico</text>
+<text x="84" y="1511" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ reprogramarTurno(turnoId: int, inicio: LocalDateTime, fin:</text>
+<text x="84" y="1532" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">  LocalDateTime, quirofanoId: int): void</text>
+<text x="84" y="1553" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ cancelarTurno(turnoId: int, motivo: String): void</text>
+<text x="84" y="1574" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ verificarDisponibilidad(inicio: LocalDateTime, fin: LocalDateTime,</text>
+<text x="84" y="1595" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">  quirofanoId: int, profesionales: List&lt;Profesional&gt;): boolean</text>
+<rect x="790" y="1270" width="245" height="71" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="790" y="1270" width="245" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="790" y1="1306" x2="1035" y2="1306" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="912.5" y="1294" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">PacienteDAO</text>
+<text x="804" y="1329" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">CRUD de Paciente</text>
+<rect x="1060" y="1270" width="245" height="71" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="1060" y="1270" width="245" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="1060" y1="1306" x2="1305" y2="1306" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1182.5" y="1294" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">ProfesionalDAO</text>
+<text x="1074" y="1329" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">CRUD de Profesional</text>
+<rect x="1330" y="1270" width="245" height="71" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="1330" y="1270" width="245" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="1330" y1="1306" x2="1575" y2="1306" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1452.5" y="1294" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">QuirofanoDAO</text>
+<text x="1344" y="1329" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">CRUD de Quirofano</text>
+<rect x="1600" y="1270" width="245" height="71" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="1600" y="1270" width="245" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="1600" y1="1306" x2="1845" y2="1306" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1722.5" y="1294" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">TipoCirugiaDAO</text>
+<text x="1614" y="1329" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">CRUD de TipoCirugia</text>
+<rect x="1870" y="1270" width="340" height="155" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="1870" y="1270" width="340" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="1870" y1="1306" x2="2210" y2="1306" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="2040.0" y="1294" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">TurnoDAO</text>
+<text x="1884" y="1329" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">CRUD de TurnoQuirurgico</text>
+<text x="1884" y="1350" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ buscarSuperposiciones(inicio:</text>
+<text x="1884" y="1371" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">  LocalDateTime, fin: LocalDateTime,</text>
+<text x="1884" y="1392" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">  quirofanoId: int):</text>
+<text x="1884" y="1413" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">  List&lt;TurnoQuirurgico&gt;</text>
+<rect x="1040" y="1535" width="430" height="169" rx="16" fill="#fbf7ea" stroke="#40576b" stroke-width="2.2"/>
+<rect x="1040" y="1535" width="430" height="50" rx="16" fill="#fbf7ea" stroke="#40576b" stroke-width="0"/>
+<line x1="1040" y1="1585" x2="1470" y2="1585" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1255.0" y="1555" text-anchor="middle" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">&lt;&lt;interface&gt;&gt;</text>
+<text x="1255.0" y="1575" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">CrudDAO&lt;T&gt;</text>
+<text x="1054" y="1608" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ crear(objeto: T): void</text>
+<text x="1054" y="1629" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ buscarPorId(id: int): T</text>
+<text x="1054" y="1650" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ listar(): List&lt;T&gt;</text>
+<text x="1054" y="1671" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ actualizar(objeto: T): void</text>
+<text x="1054" y="1692" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ eliminar(id: int): void</text>
+<rect x="1610" y="1535" width="440" height="148" rx="16" fill="#f7fafc" stroke="#40576b" stroke-width="2.2"/>
+<rect x="1610" y="1535" width="440" height="36" rx="16" fill="#dcecf3" stroke="#40576b" stroke-width="0"/>
+<line x1="1610" y1="1571" x2="2050" y2="1571" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1830.0" y="1559" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#1f2933">ConexionMySQL</text>
+<text x="1624" y="1594" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- url: String</text>
+<text x="1624" y="1615" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- usuario: String</text>
+<text x="1624" y="1636" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">- contrasena: String</text>
+<line x1="1610" y1="1648" x2="2050" y2="1648" stroke="#40576b" stroke-width="2.0" fill="none"/>
+<text x="1624" y="1671" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">+ obtenerConexion(): Connection</text>
+<polyline points="912.5,1341 1255.0,1535" fill="none" stroke="#40576b" stroke-width="1.7" stroke-dasharray="10 8" marker-end="url(#openTriangle)"/>
+<polyline points="1182.5,1341 1255.0,1535" fill="none" stroke="#40576b" stroke-width="1.7" stroke-dasharray="10 8" marker-end="url(#openTriangle)"/>
+<polyline points="1452.5,1341 1255.0,1535" fill="none" stroke="#40576b" stroke-width="1.7" stroke-dasharray="10 8" marker-end="url(#openTriangle)"/>
+<polyline points="1722.5,1341 1255.0,1535" fill="none" stroke="#40576b" stroke-width="1.7" stroke-dasharray="10 8" marker-end="url(#openTriangle)"/>
+<polyline points="2040.0,1425 1255.0,1535" fill="none" stroke="#40576b" stroke-width="1.7" stroke-dasharray="10 8" marker-end="url(#openTriangle)"/>
+<rect x="1570" y="1675" width="510" height="48" rx="8" fill="#fbf7ea" stroke="#d6c997" stroke-width="1.5"/>
+<text x="1590" y="1705" text-anchor="start" font-size="15" font-weight="400" font-style="normal" fill="#1f2933">Nota: todos los DAO utilizan ConexionMySQL.</text>
+<text x="1150.0" y="1805" text-anchor="middle" font-size="17" font-weight="400" font-style="normal" fill="#52616b">Figura 3. Clases del dominio y capa de persistencia separadas por paquetes UML.</text>
+</svg>

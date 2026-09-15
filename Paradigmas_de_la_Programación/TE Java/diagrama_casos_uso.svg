@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1040" viewBox="0 0 1800 1040">
+<title>Diagrama de casos de uso</title>
+<defs>
+  <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+    <path d="M 0 0 L 12 6 L 0 12 z" fill="#40576b"/>
+  </marker>
+  <marker id="openTriangle" markerWidth="18" markerHeight="18" refX="16" refY="9" orient="auto" markerUnits="strokeWidth">
+    <path d="M 1 1 L 17 9 L 1 17 z" fill="#ffffff" stroke="#40576b" stroke-width="2"/>
+  </marker>
+  <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#28465c" flood-opacity="0.15"/>
+  </filter>
+  <style>
+    text { font-family: "Segoe UI", Arial, sans-serif; }
+  </style>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="900.0" y="46" text-anchor="middle" font-size="30" font-weight="700" font-style="normal" fill="#1f2933">Diagrama de Casos de Uso</text>
+<text x="900.0" y="76" text-anchor="middle" font-size="17" font-weight="400" font-style="normal" fill="#52616b">Sistema de Gestión de Turnos Quirúrgicos</text>
+<rect x="315" y="115" width="1180" height="820" rx="26" fill="#fbfdff" stroke="#9bb4c5" stroke-width="3"/>
+<text x="905.0" y="157" text-anchor="middle" font-size="25" font-weight="700" font-style="normal" fill="#1f2933">Sistema de Gestión de Turnos Quirúrgicos</text>
+<polyline points="236.0,352 315,250 390.0,250.0" fill="none" stroke="#6f8190" stroke-width="1.7"/>
+<polyline points="236.0,352 315,305 712.5,300.0" fill="none" stroke="#6f8190" stroke-width="1.7"/>
+<polyline points="236.0,352 315,430 705.0,430.0" fill="none" stroke="#6f8190" stroke-width="1.7"/>
+<polyline points="236.0,352 315,560 720.0,560.0" fill="none" stroke="#6f8190" stroke-width="1.7"/>
+<polyline points="236.0,352 315,205 1075,205 1080.0,250.0" fill="none" stroke="#6f8190" stroke-width="1.7"/>
+<polyline points="236.0,712 315,690 370.0,705.0" fill="none" stroke="#6f8190" stroke-width="1.7"/>
+<polyline points="236.0,712 315,725 750.0,705.0" fill="none" stroke="#6f8190" stroke-width="1.7"/>
+<polyline points="236.0,712 315,805 365.0,820.0" fill="none" stroke="#6f8190" stroke-width="1.7"/>
+<polyline points="236.0,712 315,842 735.0,820.0" fill="none" stroke="#6f8190" stroke-width="1.7"/>
+<polyline points="1589.0,807 1495,820 1420.0,820.0" fill="none" stroke="#6f8190" stroke-width="1.7"/>
+<ellipse cx="190.0" cy="308" rx="21" ry="21" fill="#ffffff" stroke="#40576b" stroke-width="2.3"/>
+<line x1="190.0" y1="332" x2="190.0" y2="384" stroke="#40576b" stroke-width="2.3" fill="none"/>
+<line x1="154.0" y1="352" x2="226.0" y2="352" stroke="#40576b" stroke-width="2.3" fill="none"/>
+<line x1="190.0" y1="384" x2="156.0" y2="418" stroke="#40576b" stroke-width="2.3" fill="none"/>
+<line x1="190.0" y1="384" x2="224.0" y2="418" stroke="#40576b" stroke-width="2.3" fill="none"/>
+<text x="190.0" y="443.0" text-anchor="middle" font-size="19" font-weight="400" fill="#1f2933"><tspan x="190.0" dy="0">Personal</tspan><tspan x="190.0" dy="22">administrativo</tspan></text>
+<ellipse cx="190.0" cy="668" rx="21" ry="21" fill="#ffffff" stroke="#40576b" stroke-width="2.3"/>
+<line x1="190.0" y1="692" x2="190.0" y2="744" stroke="#40576b" stroke-width="2.3" fill="none"/>
+<line x1="154.0" y1="712" x2="226.0" y2="712" stroke="#40576b" stroke-width="2.3" fill="none"/>
+<line x1="190.0" y1="744" x2="156.0" y2="778" stroke="#40576b" stroke-width="2.3" fill="none"/>
+<line x1="190.0" y1="744" x2="224.0" y2="778" stroke="#40576b" stroke-width="2.3" fill="none"/>
+<text x="190.0" y="803.0" text-anchor="middle" font-size="19" font-weight="400" fill="#1f2933"><tspan x="190.0" dy="0">Administrador del</tspan><tspan x="190.0" dy="22">sistema</tspan></text>
+<ellipse cx="1635.0" cy="763" rx="21" ry="21" fill="#ffffff" stroke="#40576b" stroke-width="2.3"/>
+<line x1="1635.0" y1="787" x2="1635.0" y2="839" stroke="#40576b" stroke-width="2.3" fill="none"/>
+<line x1="1599.0" y1="807" x2="1671.0" y2="807" stroke="#40576b" stroke-width="2.3" fill="none"/>
+<line x1="1635.0" y1="839" x2="1601.0" y2="873" stroke="#40576b" stroke-width="2.3" fill="none"/>
+<line x1="1635.0" y1="839" x2="1669.0" y2="873" stroke="#40576b" stroke-width="2.3" fill="none"/>
+<text x="1635.0" y="909.0" text-anchor="middle" font-size="19" font-weight="400" fill="#1f2933"><tspan x="1635.0" dy="0">Profesional médico</tspan></text>
+<polyline points="128.0,682 128.0,352 144.0,352" fill="none" stroke="#40576b" stroke-width="2.0" marker-end="url(#openTriangle)"/>
+<text x="545" y="180" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#52616b">Datos maestros</text>
+<text x="885" y="180" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#52616b">Gestión de turnos</text>
+<text x="1245" y="180" text-anchor="middle" font-size="18" font-weight="700" font-style="normal" fill="#52616b">Consultas e inclusiones</text>
+<ellipse cx="545" cy="250" rx="155.0" ry="37.0" fill="#ffffff" stroke="#40576b" stroke-width="2.4"/>
+<text x="545" y="257.0" text-anchor="middle" font-size="20" font-weight="400" fill="#1f2933"><tspan x="545" dy="0">Gestionar pacientes</tspan></text>
+<ellipse cx="885" cy="300" rx="172.5" ry="42.0" fill="#e8f2f7" stroke="#40576b" stroke-width="2.4"/>
+<text x="885" y="307.0" text-anchor="middle" font-size="20" font-weight="400" fill="#1f2933"><tspan x="885" dy="0">Programar turno quirúrgico</tspan></text>
+<ellipse cx="885" cy="430" rx="180.0" ry="42.0" fill="#ffffff" stroke="#40576b" stroke-width="2.4"/>
+<text x="885" y="425.0" text-anchor="middle" font-size="20" font-weight="400" fill="#1f2933"><tspan x="885" dy="0">Reprogramar turno</tspan><tspan x="885" dy="24">quirúrgico</tspan></text>
+<ellipse cx="885" cy="560" rx="165.0" ry="37.0" fill="#ffffff" stroke="#40576b" stroke-width="2.4"/>
+<text x="885" y="567.0" text-anchor="middle" font-size="20" font-weight="400" fill="#1f2933"><tspan x="885" dy="0">Cancelar turno quirúrgico</tspan></text>
+<ellipse cx="1235" cy="250" rx="155.0" ry="37.0" fill="#ffffff" stroke="#40576b" stroke-width="2.4"/>
+<text x="1235" y="257.0" text-anchor="middle" font-size="20" font-weight="400" fill="#1f2933"><tspan x="1235" dy="0">Consultar turnos</tspan></text>
+<ellipse cx="1245" cy="420" rx="172.5" ry="42.0" fill="#fbf7ea" stroke="#40576b" stroke-width="2.4"/>
+<text x="1245" y="427.0" text-anchor="middle" font-size="20" font-weight="400" fill="#1f2933"><tspan x="1245" dy="0">Consultar disponibilidad</tspan></text>
+<ellipse cx="1245" cy="565" rx="185.0" ry="42.0" fill="#fbf7ea" stroke="#40576b" stroke-width="2.4"/>
+<text x="1245" y="560.0" text-anchor="middle" font-size="20" font-weight="400" fill="#1f2933"><tspan x="1245" dy="0">Asignar profesionales al</tspan><tspan x="1245" dy="24">turno</tspan></text>
+<ellipse cx="545" cy="705" rx="175.0" ry="37.0" fill="#ffffff" stroke="#40576b" stroke-width="2.4"/>
+<text x="545" y="712.0" text-anchor="middle" font-size="20" font-weight="400" fill="#1f2933"><tspan x="545" dy="0">Gestionar profesionales</tspan></text>
+<ellipse cx="545" cy="820" rx="180.0" ry="37.0" fill="#ffffff" stroke="#40576b" stroke-width="2.4"/>
+<text x="545" y="827.0" text-anchor="middle" font-size="20" font-weight="400" fill="#1f2933"><tspan x="545" dy="0">Gestionar especialidades</tspan></text>
+<ellipse cx="915" cy="705" rx="165.0" ry="37.0" fill="#ffffff" stroke="#40576b" stroke-width="2.4"/>
+<text x="915" y="712.0" text-anchor="middle" font-size="20" font-weight="400" fill="#1f2933"><tspan x="915" dy="0">Gestionar quirófanos</tspan></text>
+<ellipse cx="915" cy="820" rx="180.0" ry="37.0" fill="#ffffff" stroke="#40576b" stroke-width="2.4"/>
+<text x="915" y="827.0" text-anchor="middle" font-size="20" font-weight="400" fill="#1f2933"><tspan x="915" dy="0">Gestionar tipos de cirugía</tspan></text>
+<ellipse cx="1245" cy="820" rx="175.0" ry="37.0" fill="#ffffff" stroke="#40576b" stroke-width="2.4"/>
+<text x="1245" y="827.0" text-anchor="middle" font-size="20" font-weight="400" fill="#1f2933"><tspan x="1245" dy="0">Consultar agenda personal</tspan></text>
+<line x1="1050" y1="315" x2="1085" y2="395" stroke="#40576b" stroke-width="2.2" fill="none" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+<rect x="1055.6" y="332" width="112.80000000000001" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1112" y="344" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">&lt;&lt;include&gt;&gt;</text>
+<line x1="1045" y1="330" x2="1085" y2="545" stroke="#40576b" stroke-width="2.2" fill="none" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+<rect x="1063.6" y="500" width="112.80000000000001" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1120" y="512" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">&lt;&lt;include&gt;&gt;</text>
+<line x1="1060" y1="420" x2="1085" y2="420" stroke="#40576b" stroke-width="2.2" fill="none" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+<rect x="1037.6" y="393" width="112.80000000000001" height="24" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="1094" y="405" text-anchor="middle" font-size="16" font-weight="400" font-style="normal" fill="#1f2933">&lt;&lt;include&gt;&gt;</text>
+<text x="900.0" y="990" text-anchor="middle" font-size="17" font-weight="400" font-style="normal" fill="#52616b">Figura 1. El Administrador del sistema es una especialización del Personal administrativo y hereda sus funciones.</text>
+</svg>
